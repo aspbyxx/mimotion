@@ -314,12 +314,9 @@ def push_wx(desp=""):
 
         response = requests.get(server_url, params=params).text
         print(response)
-#企业微信
-def get_access_token():
-    urls = base_url + 'corpid=' + corpid + '&corpsecret=' + corpsecret
-    resp = requests.get(urls).json()
-    access_token = resp['access_token']
-    return access_token
+
+
+
 
 
 def run(msg):
@@ -351,4 +348,4 @@ def main_handler(event, context):
     getBeijinTime()
 
 if __name__ == "__main__":
-    getBeijinTime(
+    getBeijinTime()
