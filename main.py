@@ -307,26 +307,6 @@ def push_wx(desp=""):
 
 
 
-def run(msg):
-    if position:
-        data = {
-            "touser": touser,
-            "toparty": toparty,
-            "totag": totag,
-            "msgtype": "text",
-            "agentid": agentid,
-            "text": {
-                "content": "【小米运动步数修改】\n" + msg
-            },
-            "safe": 0,
-            "enable_id_trans": 0,
-            "enable_duplicate_check": 0,
-            "duplicate_check_interval": 1800
-        }
-        data = json.dumps(data)
-        req_urls = req_url + get_access_token()
-        resp = requests.post(url=req_urls, data=data).text
-        print(resp)
         #print(data)
         return resp
     else:
