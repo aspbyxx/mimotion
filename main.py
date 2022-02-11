@@ -10,15 +10,15 @@ skey = sys.argv[3]
 sckey = sys.argv[4]
 # 企业微信推送
 # 是否开启企业微信推送false关闭true开启，默认关闭，开启后请填写设置并将上面两个都留空
-position = sys.argv[5]
-base_url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?'
-req_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token='
-corpid = sys.argv[6]  # 企业ID， 登陆企业微信，在我的企业-->企业信息里查看
-corpsecret = sys.argv[7]  # 自建应用，每个自建应用里都有单独的secret
-agentid = sys.argv[8]  # 填写你的应用ID，不加引号，是个整型常数,就是AgentId
-touser = sys.argv[9]  # 指定接收消息的成员，成员ID列表（多个接收者用‘|’分隔，最多支持1000个）。特殊情况：指定为”@all”，则向该企业应用的全部成员发送
-toparty = sys.argv[10]  # 指定接收消息的部门，部门ID列表，多个接收者用‘|’分隔，最多支持100个。当touser为”@all”时忽略本参数
-totag = sys.argv[11]  # 指定接收消息的标签，标签ID列表，多个接收者用‘|’分隔，最多支持100个。当touser为”@all”时忽略本参数
+#position = sys.argv[5]
+#base_url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?'
+#req_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token='
+#corpid = sys.argv[6]  # 企业ID， 登陆企业微信，在我的企业-->企业信息里查看
+#corpsecret = sys.argv[7]  # 自建应用，每个自建应用里都有单独的secret
+#agentid = sys.argv[8]  # 填写你的应用ID，不加引号，是个整型常数,就是AgentId
+#touser = sys.argv[9]  # 指定接收消息的成员，成员ID列表（多个接收者用‘|’分隔，最多支持1000个）。特殊情况：指定为”@all”，则向该企业应用的全部成员发送
+#toparty = sys.argv[10]  # 指定接收消息的部门，部门ID列表，多个接收者用‘|’分隔，最多支持100个。当touser为”@all”时忽略本参数
+#totag = sys.argv[11]  # 指定接收消息的标签，标签ID列表，多个接收者用‘|’分隔，最多支持100个。当touser为”@all”时忽略本参数
 
 # （用于测试推送如果改了能收到推送，推送设置就没问题，看看是不是set_push列表里面没设置推送，仔细看下面我写的很详细）要修改的步数，直接输入想要修改的步数值，（默认）留空为随机步数，改了这个直接运行固定值（用于测试推送）
 # 测试好记得留空不然一直提交固定步数
@@ -317,37 +317,37 @@ def push_wx(desp=""):
 
 
 # 企业微信
-def get_access_token():
-    urls = base_url + 'corpid=' + corpid + '&corpsecret=' + corpsecret
-    resp = requests.get(urls).json()
-    access_token = resp['access_token']
-    return access_token
+#def get_access_token():
+ #   urls = base_url + 'corpid=' + corpid + '&corpsecret=' + corpsecret
+  #  resp = requests.get(urls).json()
+   # access_token = resp['access_token']
+    #return access_token
 
 
-def run(msg):
-    if position:
-        data = {
-            "touser": touser,
-            "toparty": toparty,
-            "totag": totag,
-            "msgtype": "text",
-            "agentid": agentid,
-            "text": {
-                "content": "【小米运动步数修改】\n" + msg
-            },
-            "safe": 0,
-            "enable_id_trans": 0,
-            "enable_duplicate_check": 0,
-            "duplicate_check_interval": 1800
-        }
-        data = json.dumps(data)
-        req_urls = req_url + get_access_token()
-        resp = requests.post(url=req_urls, data=data).text
-        print(resp)
+#def run(msg):
+ #   if position:
+  #      data = {
+   #         "touser": touser,
+    #        "toparty": toparty,
+     #       "totag": totag,
+      #      "msgtype": "text",
+       #     "agentid": agentid,
+        #    "text": {
+         #       "content": "【小米运动步数修改】\n" + msg
+          #  },
+           # "safe": 0,
+            #"enable_id_trans": 0,
+            #"enable_duplicate_check": 0,
+            #"duplicate_check_interval": 1800
+        #}
+        #data = json.dumps(data)
+        #req_urls = req_url + get_access_token()
+        #resp = requests.post(url=req_urls, data=data).text
+        #print(resp)
         #print(data)
-        return resp
-    else:
-        return
+     #   return resp
+    #else:
+      #  return
 
 def main_handler(event, context):
     getBeijinTime()
