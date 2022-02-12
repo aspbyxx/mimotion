@@ -349,8 +349,9 @@ def push_wx(desp=""):
     #else:
       #  return
 
-def main_handler(event, context):
-    getBeijinTime()
+#def main_handler(event, context):
+ 
+#   getBeijinTime()
 
-if __name__ == "__main__":
-    getBeijinTime()
+#if __name__ == "__main__":
+ #   getBeijinTime()
